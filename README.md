@@ -7,7 +7,7 @@ This skeleton is based on the NLJUG events app backend.
 
 ## Getting started
 Prerequisites:
-- Java 11
+- Java 17
 - Maven
 - AWS CLI (see https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 - AWS SAM CLI (see https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
