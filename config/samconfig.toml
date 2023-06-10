@@ -1,8 +1,8 @@
 # https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-config.html
 version = 0.1
 [default.deploy.parameters]
-stack_name = "QuarkusLambda"
-s3_prefix = "QuarkusLambda"
+stack_name = "serverlessApi"
+s3_prefix = "serverlessApi"
 resolve_s3 = true
 region = "eu-west-1"
 confirm_changeset = false

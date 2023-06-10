@@ -8,7 +8,7 @@
         - "*/*"
 
   Resources:
-    QuarkusLambda:
+    serverlessApiResource:
       Type: AWS::Serverless::Function
       Properties:
         Architectures:
@@ -23,13 +23,13 @@
           Variables:
             DISABLE_SIGNAL_HANDLERS: true
         Events:
-          Api:
+          serverlessEvent:
             Type: Api
             Properties:
               Path: /{proxy+}
               Method: any
-              RestApiId: !Ref ApiDeployment
-    ApiDeployment:
+              RestApiId: !Ref serverlessDeployment
+    serverlessDeployment:
       Type: AWS::Serverless::Api
       Properties:
         StageName: !Ref Stage
@@ -37,11 +37,10 @@
   Parameters:
     Stage:
       Type: String
+      # this will end up in the url. you can also use "v1" or "api" here, for example.
       Default: 'prod'
 
   Outputs:
-    QuarkusLambdaApi:
+    URLOutput:
       Description: URL for application
-      Value: !Sub 'https://${ApiDeployment}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/'
-      Export:
-        Name: QuarkusLambdaApi
+      Value: !Sub 'https://${serverlessDeployment}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/'
