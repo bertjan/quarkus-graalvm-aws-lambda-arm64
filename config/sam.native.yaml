@@ -8,7 +8,7 @@
         - "*/*"
 
   Resources:
-    QuarkusGraalvmAwsLambdaArmNative:
+    QuarkusLambda:
       Type: AWS::Serverless::Function
       Properties:
         Architectures:
@@ -23,15 +23,25 @@
           Variables:
             DISABLE_SIGNAL_HANDLERS: true
         Events:
-          GetResource:
+          Api:
             Type: Api
             Properties:
               Path: /{proxy+}
               Method: any
+              RestApiId: !Ref ApiDeployment
+    ApiDeployment:
+      Type: AWS::Serverless::Api
+      Properties:
+        StageName: !Ref Stage
+
+  Parameters:
+    Stage:
+      Type: String
+      Default: 'prod'
 
   Outputs:
-    QuarkusGraalvmAwsLambdaArmNativeApi:
+    QuarkusLambdaApi:
       Description: URL for application
-      Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/'
+      Value: !Sub 'https://${ApiDeployment}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/'
       Export:
-        Name: QuarkusGraalvmAwsLambdaArmNativeApi
+        Name: QuarkusLambdaApi

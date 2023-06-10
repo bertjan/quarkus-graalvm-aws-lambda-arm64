@@ -1,2 +1,4 @@
 #!/bin/bash
-sam deploy -t target/sam.native.yaml -g
+cp config/sam.native.yaml target/
+cp config/samconfig.toml target/
+sam deploy -t target/sam.native.yaml
