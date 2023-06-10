@@ -1,0 +1,37 @@
+  AWSTemplateFormatVersion: '2010-09-09'
+  Transform: AWS::Serverless-2016-10-31
+  Description: AWS Serverless Quarkus HTTP - quarkus-graalvm-aws-lambda-arm64-1.0-SNAPSHOT
+  Globals:
+    Api:
+      EndpointConfiguration: REGIONAL
+      BinaryMediaTypes:
+        - "*/*"
+
+  Resources:
+    QuarkusGraalvmAwsLambdaArmNative:
+      Type: AWS::Serverless::Function
+      Properties:
+        Architectures:
+          - arm64
+        Handler: not.used.in.provided.runtime
+        Runtime: provided.al2
+        CodeUri: function.zip
+        MemorySize: 256
+        Policies: AWSLambdaBasicExecutionRole
+        Timeout: 15
+        Environment:
+          Variables:
+            DISABLE_SIGNAL_HANDLERS: true
+        Events:
+          GetResource:
+            Type: Api
+            Properties:
+              Path: /{proxy+}
+              Method: any
+
+  Outputs:
+    QuarkusGraalvmAwsLambdaArmNativeApi:
+      Description: URL for application
+      Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/'
+      Export:
+        Name: QuarkusGraalvmAwsLambdaArmNativeApi
