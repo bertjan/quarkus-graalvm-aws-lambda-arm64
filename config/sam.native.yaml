@@ -9,14 +9,14 @@
 
   Resources:
 
-# Enable if you want to configure a custom domain (url) for the API gateway
+    # Enable if you want to configure a custom domain (url) for the API gateway
 #    ApiCertificate:
 #      Type: AWS::CertificateManager::Certificate
 #      Properties:
 #        DomainName: !Ref CustomDomainName
 #        ValidationMethod: DNS
 
-    serverlessApiResource:
+    ServerlessApiResource:
       Type: AWS::Serverless::Function
       Properties:
         Architectures:
@@ -31,13 +31,14 @@
           Variables:
             DISABLE_SIGNAL_HANDLERS: true
         Events:
-          serverlessEvent:
+          ServerlessEvent:
             Type: Api
             Properties:
               Path: /{proxy+}
               Method: any
-              RestApiId: !Ref serverlessDeployment
-    serverlessDeployment:
+              RestApiId: !Ref ServerlessApiDeployment
+
+    ServerlessApiDeployment:
       Type: AWS::Serverless::Api
       Properties:
         StageName: !Ref Stage
@@ -60,7 +61,12 @@
   Outputs:
     ApiGwURLOutput:
       Description: API gateway URL
-      Value: !Sub 'https://${serverlessDeployment}.execute-api.${AWS::Region}.amazonaws.com/${Stage}'
-    CustomDomainURLOutput:
-      Description: Custom domain URL
-      Value: !Sub 'https://${CustomDomainName}'
+      Value: !Sub 'https://${ServerlessApiDeployment}.execute-api.${AWS::Region}.amazonaws.com/${Stage}'
+    StackName:
+      Description: Cloudformation Stack name
+      Value: !Sub '${AWS::StackName}'
+
+    # Enable if you want to configure a custom domain (url) for the API gateway
+  #    CustomDomainURLOutput:
+  #      Description: Custom domain URL
+  #      Value: !Sub 'https://${CustomDomainName}'

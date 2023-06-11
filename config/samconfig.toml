@@ -1,8 +1,8 @@
 # https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-config.html
 version = 0.1
 [default.deploy.parameters]
-stack_name = "serverlessApi"
-s3_prefix = "serverlessApi"
+stack_name = "ServerlessApi"
+s3_prefix = "ServerlessApi"
 resolve_s3 = true
 region = "eu-west-1"
 confirm_changeset = false
