@@ -7,6 +7,7 @@ This skeleton is based on the NLJUG events app backend.
 
 ## Getting started
 Prerequisites:
+- An ARM machine (Macbook M1/M2 for example) 
 - Java 17
 - Maven
 - AWS CLI (see https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
