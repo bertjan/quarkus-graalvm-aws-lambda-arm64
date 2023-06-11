@@ -8,6 +8,14 @@
         - "*/*"
 
   Resources:
+
+# Enable if you want to configure a custom domain (url) for the API gateway
+#    ApiCertificate:
+#      Type: AWS::CertificateManager::Certificate
+#      Properties:
+#        DomainName: !Ref CustomDomainName
+#        ValidationMethod: DNS
+
     serverlessApiResource:
       Type: AWS::Serverless::Function
       Properties:
@@ -33,14 +41,26 @@
       Type: AWS::Serverless::Api
       Properties:
         StageName: !Ref Stage
+        EndpointConfiguration: REGIONAL
+        # Enable if you want to configure a custom domain (url) for the API gateway
+#        Domain:
+#          DomainName: !Ref CustomDomainName
+#          CertificateArn: !Ref ApiCertificate
 
   Parameters:
     Stage:
       Type: String
       # this will end up in the url. you can also use "v1" or "api" here, for example.
       Default: 'prod'
+    CustomDomainName:
+      Type: String
+      # custom domain name to use for the API gateway
+      Default: nljug-events.openvalue.dev
 
   Outputs:
-    URLOutput:
-      Description: URL for application
-      Value: !Sub 'https://${serverlessDeployment}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/'
+    ApiGwURLOutput:
+      Description: API gateway URL
+      Value: !Sub 'https://${serverlessDeployment}.execute-api.${AWS::Region}.amazonaws.com/${Stage}'
+    CustomDomainURLOutput:
+      Description: Custom domain URL
+      Value: !Sub 'https://${CustomDomainName}'
