@@ -53,10 +53,11 @@
       Type: String
       # this will end up in the url. you can also use "v1" or "api" here, for example.
       Default: 'prod'
-    CustomDomainName:
-      Type: String
-      # custom domain name to use for the API gateway
-      Default: nljug-events.openvalue.dev
+      # Enable if you want to configure a custom domain (url) for the API gateway
+#    CustomDomainName:
+#      Type: String
+#      # custom domain name to use for the API gateway
+#      Default: demo-bertjan-1.openvalue.dev
 
   Outputs:
     ApiGwURLOutput:
@@ -65,8 +66,7 @@
     StackName:
       Description: Cloudformation Stack name
       Value: !Sub '${AWS::StackName}'
-
     # Enable if you want to configure a custom domain (url) for the API gateway
-  #    CustomDomainURLOutput:
-  #      Description: Custom domain URL
-  #      Value: !Sub 'https://${CustomDomainName}'
+#    CustomDomainURLOutput:
+#      Description: Custom domain URL
+#      Value: !Sub 'https://${CustomDomainName}/${Stage}'

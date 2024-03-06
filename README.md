@@ -10,22 +10,22 @@ Prerequisites:
 - An ARM machine (Macbook M1/M2 for example) 
 - Java 17
 - Maven
-- AWS CLI (see https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
-- AWS SAM CLI (see https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
-- AWS account
-- Configured AWS CLI (via `aws configure`)
+- An AWS account 
+- AWS CLI installed (see https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+- AWS SAM CLI installed (see https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
+- Configured AWS CLI (via `aws configure`) - access & secret key configured for your AWS account
 
 ## Howto
-This skeleton is based on the following guide: https://quarkus.io/guides/amazon-lambda-http - kudos to the Quarkus team for writing it!
+This skeleton is based on the following guide: https://quarkus.io/guides/aws-lambda-http - kudos to the Quarkus team for writing it!
 
 ## Generation
 This skeleton was generated using the `quarkus-amazon-lambda-rest-archetype`:
 
 ```
 mvn archetype:generate \
--DarchetypeGroupId=io.quarkus \
--DarchetypeArtifactId=quarkus-amazon-lambda-rest-archetype \
--DarchetypeVersion=3.1.1.Final
+       -DarchetypeGroupId=io.quarkus \
+       -DarchetypeArtifactId=quarkus-amazon-lambda-rest-archetype \
+       -DarchetypeVersion=3.8.1
 ```
 
 
