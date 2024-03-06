@@ -86,6 +86,10 @@ Test the lambda via `curl <url>/hello`
 
 This should output `Hi from NLJUG!`.
 
+## Retrieving AWS lambda logs
+`sam logs --stack-name ServerlessApi`
+
+
 ## Deleting the lambda + API gateway
 `scripts/destroy.sh` (or `sam delete`)
 This will delete the lambda, API gateway and any associated resources. 
