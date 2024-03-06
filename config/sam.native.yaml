@@ -53,16 +53,16 @@
       Type: String
       # this will end up in the url. you can also use "v1" or "api" here, for example.
       Default: 'prod'
-      # Enable if you want to configure a custom domain (url) for the API gateway
+    # Enable if you want to configure a custom domain (url) for the API gateway
 #    CustomDomainName:
 #      Type: String
 #      # custom domain name to use for the API gateway
-#      Default: demo-bertjan-1.openvalue.dev
+#      Default: serverless-api.demo-bertjan-1.openvalue.dev
 
   Outputs:
     ApiGwURLOutput:
       Description: API gateway URL
-      Value: !Sub 'https://${ServerlessApiDeployment}.execute-api.${AWS::Region}.amazonaws.com/${Stage}'
+      Value: !Sub 'https://${ServerlessApiDeployment}.execute-api.${AWS::Region}.amazonaws.com'
     StackName:
       Description: Cloudformation Stack name
       Value: !Sub '${AWS::StackName}'
