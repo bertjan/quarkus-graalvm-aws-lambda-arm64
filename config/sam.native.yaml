@@ -62,11 +62,11 @@
   Outputs:
     ApiGwURLOutput:
       Description: API gateway URL
-      Value: !Sub 'https://${ServerlessApiDeployment}.execute-api.${AWS::Region}.amazonaws.com'
+      Value: !Sub 'https://${ServerlessApiDeployment}.execute-api.${AWS::Region}.amazonaws.com/${Stage}'
     StackName:
       Description: Cloudformation Stack name
       Value: !Sub '${AWS::StackName}'
     # Enable if you want to configure a custom domain (url) for the API gateway
 #    CustomDomainURLOutput:
 #      Description: Custom domain URL
-#      Value: !Sub 'https://${CustomDomainName}/${Stage}'
+#      Value: !Sub 'https://${CustomDomainName}'
