@@ -15,6 +15,10 @@
 #      Properties:
 #        DomainName: !Ref CustomDomainName
 #        ValidationMethod: DNS
+#        # Enable if you want automated certificate validation through Route53
+#        DomainValidationOptions:
+#          - DomainName: !Ref CustomDomainName
+#            HostedZoneId: !Ref HostedZoneId
 
     ServerlessApiResource:
       Type: AWS::Serverless::Function
@@ -47,7 +51,9 @@
 #        Domain:
 #          DomainName: !Ref CustomDomainName
 #          CertificateArn: !Ref ApiCertificate
-
+#          # Enable if you want automatic dns configuration through Route 53
+#          Route53:
+#            HostedZoneId: !Ref HostedZoneId
   Parameters:
     Stage:
       Type: String
@@ -58,6 +64,11 @@
 #      Type: String
 #      # custom domain name to use for the API gateway
 #      Default: serverless-api.demo-bertjan-1.openvalue.dev
+#    # Enable if you want automated DNS configuration through Route53
+#    HostedZoneId:
+#      Type: String
+#      # Route 53 hosted zone id to create the reference to the custom domain name in
+#      Default: Z03815861S4U8K2I6IF0V
 
   Outputs:
     ApiGwURLOutput:
