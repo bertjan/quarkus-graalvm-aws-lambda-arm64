@@ -54,6 +54,7 @@
 #          # Enable if you want automatic dns configuration through Route 53
 #          Route53:
 #            HostedZoneId: !Ref HostedZoneId
+
   Parameters:
     Stage:
       Type: String
