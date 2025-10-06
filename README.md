@@ -16,7 +16,7 @@ Prerequisites:
 - Configured AWS CLI (via `aws configure`) - access & secret key configured for your AWS account
 
 ## Howto
-This skeleton is based on the following guide: https://quarkus.io/guides/aws-lambda-http - kudos to the Quarkus team for writing it!
+This skeleton is based on the following guide: https://quarkus.io/guides/aws-lambda-http (and specifically the AWS Gateway REST API variant) - kudos to the Quarkus team for writing it!
 
 ## Generation
 This skeleton was generated using the `quarkus-amazon-lambda-rest-archetype`:
@@ -25,7 +25,7 @@ This skeleton was generated using the `quarkus-amazon-lambda-rest-archetype`:
 mvn archetype:generate \
        -DarchetypeGroupId=io.quarkus \
        -DarchetypeArtifactId=quarkus-amazon-lambda-rest-archetype \
-       -DarchetypeVersion=3.8.1
+       -DarchetypeVersion=3.28.2
 ```
 
 
